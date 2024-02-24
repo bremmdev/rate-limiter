@@ -14,3 +14,11 @@ export function getIp() {
 
   return null;
 }
+
+export function createSlidingWindow(timeWindow: number) {
+  //check for rate limit by checking requests for this ip in last # seconds (timeWindow)
+  const timeWindowStart = new Date(Date.now() - timeWindow * 1000)
+    .toISOString()
+    .replace("Z", "0000Z");
+  return timeWindowStart;
+}
